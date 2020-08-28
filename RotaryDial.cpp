@@ -4,11 +4,11 @@
 #define DEBOUNCE_DELAY	15
 
 RotaryDial::RotaryDial (int pulsePin, int readyPin) {
-    _pulsePin = pulsePin;
-    _readyPin = readyPin;
-    pinMode(_pulsePin, INPUT_PULLUP);
-    pinMode(_pulsePin, INPUT_PULLUP);
-    _lastStateChangeMillis = millis();
+	_pulsePin = pulsePin;
+	_readyPin = readyPin;
+	pinMode(_pulsePin, INPUT_PULLUP);
+	pinMode(_pulsePin, INPUT_PULLUP);
+	_lastStateChangeMillis = millis();
 }
 
 
@@ -19,7 +19,7 @@ uint8_t RotaryDial::changeStateIfDebounced(state_t newState) {
 		_lastStateChangeMillis = currentMillis;
 		return 1;
 	}
-    else {
+	else {
 		return 0;
 	}
 }
@@ -53,7 +53,7 @@ uint8_t RotaryDial::update (void) {
 			if (readyStatus == 1) {
 				completeDial();
 			}
-            else if (pulseStatus == 1) {
+            		else if (pulseStatus == 1) {
 				changeStateIfDebounced(LISTENING_PULSE);
 			}
 			break;
@@ -61,7 +61,7 @@ uint8_t RotaryDial::update (void) {
 			if (readyStatus == 1) {
 				completeDial();
 			}
-            else if (pulseStatus == 0 && changeStateIfDebounced(LISTENING_NOPULSE)) {
+            		else if (pulseStatus == 0 && changeStateIfDebounced(LISTENING_NOPULSE)) {
 				_number++;
 			}
 			break;
@@ -80,7 +80,7 @@ int8_t RotaryDial::getNextNumber() {
 		_hasCompletedNumber = 0;
 		return _number;
 	}
-    else {
+    	else {
 		return NO_NUMBER;
 	}
 }
